@@ -41,6 +41,9 @@ app.factory('io', function($rootScope) {
 app.run(function(io) {
     console.log("CONNECTING IO");
     io.connect();
+    io.socket.on("install", function(data) {
+        console.log("NEED INSTALLATION", data);
+    })
 });
 
 app.config(function($routeProvider, $locationProvider) {
