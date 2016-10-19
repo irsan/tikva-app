@@ -1,0 +1,10 @@
+.install { padding: 20px; }
+
+.install .title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.install .info {
+    font-style: italic;
+    margin: 15px 0;
+}

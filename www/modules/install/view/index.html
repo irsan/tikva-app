@@ -1,0 +1,23 @@
+<div layout="column" flex class="install">
+    <div layout layout-align="center start">
+        <div class="title">Installation</div>
+    </div>
+    <div class="info">
+        Please enter Administrator's information
+    </div>
+    <md-input-container>
+        <label>Name</label>
+        <input ng-model="input.name" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Mobile</label>
+        <input ng-model="input.mobile" type="tel">
+    </md-input-container>
+    <md-input-container>
+        <label>Installation Key</label>
+        <input ng-model="input.key" type="text">
+    </md-input-container>
+    <div layout layout-align="center center">
+        <md-button class="md-raised md-primary" flex ng-click="install()">Submit</md-button>
+    </div>
+</div>

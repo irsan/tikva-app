@@ -32,24 +32,33 @@ app.factory('io', function($rootScope) {
     var ioFactory = {
         connect : function() {
             ioFactory.socket = io.connect(socketioURL);
+            ioFactory.socket.on("install", function(data) {
+                window.location.href = "#/install";
+            })
+            ioFactory.socket.on("response_install", function(data) {
+                console.log("RESPONSE INSTALL", data);
+            });
+        },
+        install : function(data) {
+            ioFactory.socket.emit("install", data);
         }
     };
 
     return ioFactory;
 });
 
-app.run(function(io) {
+app.run(function($location, io) {
     console.log("CONNECTING IO");
     io.connect();
-    io.socket.on("install", function(data) {
-        console.log("NEED INSTALLATION", data);
-    })
 });
 
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'modules/test/view/test.html',
-        controller: 'testCtrl',
+        templateUrl: 'modules/welcome/view/index.html',
+        controller: 'welcomeCtrl',
+    }).when('/install', {
+        templateUrl: 'modules/install/view/index.html',
+        controller: 'installCtrl',
     }).otherwise({
         redirectTo: '/'
     });
